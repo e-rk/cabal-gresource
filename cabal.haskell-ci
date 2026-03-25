@@ -1,0 +1,191 @@
+-- cabal-install version for all jobs
+cabal-install-version: 3.18.1.0
+
+-- jobs (N:M - cabal:ghc)
+jobs:
+
+-- distribution version (xenial, bionic, focal, jammy, noble)
+distribution: noble
+
+-- Jobs selection across packages
+jobs-selection: uniform
+
+-- Restrict jobs selection futher from per package tested-with
+enabled: True
+
+-- Copy ? fields from cabal.project fields
+copy-fields: some
+
+-- --ghc-options for local packages
+local-ghc-options:
+
+-- Clone submodules, i.e. recursively
+submodules: False
+
+-- Disable caching
+cache: True
+
+-- Skip separate dependency installation step
+install-dependencies: True
+
+-- Specify 'constraint: ... installed' packages
+installed: +all -Cabal -Cabal-syntax -Cabal-hooks -process
+
+-- Build tests with
+tests: True
+
+-- Run tests with (note: only built tests are run)
+run-tests: True
+
+-- Build benchmarks
+benchmarks: True
+
+-- Haddock step
+haddock: True
+
+-- Haddock components
+haddock-components: all
+
+-- Build without tests and benchmarks
+no-tests-no-benchmarks: True
+
+-- Make unconstrained build
+unconstrained: True
+
+-- Use head.hackage repository. Also marks as allow-failures
+head-hackage: >=9.15
+
+-- Use :override for head.hackage repository
+head-hackage-override: True
+
+-- Run tests with GHCJS (experimental, relies on cabal-plan finding test-suites)
+ghcjs-tests: False
+
+ghcjs-tools:
+
+-- Use --test-show-details=direct, may cause problems with build-type: Custom
+test-output-direct: True
+
+-- Disable cabal check run
+cabal-check: True
+
+-- Enable builds only for specific branches
+branches:
+
+-- Enable IRC notifications to given channel (e.g. 'irc.libera.chat#haskell-lens')
+irc-channels:
+
+-- Nickname with which to authenticate to an IRC server. Only used if `irc-channels` are set.
+irc-nickname:
+
+-- Password with which to authenticate to an IRC server. Only used if `irc-channels` are set.
+irc-password:
+
+-- Only send IRC notifications if run from the original remote (GitHub Actions only)
+irc-if-in-origin-repo: False
+
+-- Disable email notifications
+email-notifications: True
+
+-- Project name (used for IRC notifications), defaults to package name or name of first package listed in cabal.project file
+project-name:
+
+-- Add ghc-head job
+ghc-head: False
+
+-- Add postgresql service
+postgresql: False
+
+-- Add google-chrome service
+google-chrome: False
+
+-- Environment variables per job (e.g. `8.0.2:HADDOCK=false`)
+env:
+
+-- Allow failures of particular GHC version
+allow-failures: False
+
+-- [Discouraged] Assume there are only GHCs last in major series: 8.2.* will match only 8.2.2
+last-in-series: False
+
+-- Jobs to build on Linux
+linux-jobs: True
+
+-- Jobs to additionally build with OSX
+macos-jobs: False
+
+-- Use (or don't) ghcup to install cabal
+ghcup-cabal: True
+
+-- (Linux) jobs to use hvr-ppa to install ghc
+hvr-ppa-jobs: False
+
+-- (Linux) jobs to use ghcup to install ghc
+ghcup-jobs: <9.8.3 || >=9.8.4
+
+-- (Linux) jobs to use ghcup-vanilla to install ghc
+ghcup-vanilla-jobs: >=9.8.3 && <9.8.4
+
+-- (Linux) jobs to use ghcup-prerelease to install ghc
+ghcup-prerelease-jobs: False
+
+-- ghcup version
+ghcup-version: 0.1.50.1
+
+-- Additional apt packages to install
+apt: pkg-config libglib2.0-dev libgirepository1.0-dev gobject-introspection
+
+travis-patches:
+
+github-patches: cabal.ghactions.patch
+
+-- Don't insert the haskell-ci version into the generated Travis YAML file
+insert-version: True
+
+-- Insert -Werror=missing-methods for package scope (none, local, all)
+error-missing-methods: local
+
+-- Insert -Werror=unused-packages
+error-unused-packages: >=9.4
+
+-- Insert -Werror=incomplete-(uni-)patterns
+error-incomplete-patterns: >=9.0
+
+-- Enable Doctest job
+doctest: False
+
+-- Additional Doctest options
+doctest-options:
+
+-- Doctest version
+doctest-version: ^>=0.22.0
+
+-- Filter packages from .ghc.environment file
+doctest-filter-packages:
+
+-- Skip doctests for these packages
+doctest-skip:
+
+-- Enable Docspec job
+docspec: False
+
+-- Additional Docspec options
+docspec-options:
+
+-- URL to download cabal-docspec
+docspec-url: https://github.com/phadej/cabal-extras/releases/download/cabal-docspec-0.0.0.20250606/cabal-docspec-0.0.0.20250606-x86_64-linux.xz
+
+-- SHA256 of cabal-docspec
+docspec-hash: cc20bb5c19501b42bde77556bc419c7c0a5c8d1eb65663024d8a4e4c868bef25
+
+-- Raw travis commands which will be run at the very end of the script
+raw-travis:
+
+-- The name of GitHub Action
+github-action-name:
+
+-- The maximum number of minutes to let a job run
+timeout-minutes: 60
+
+-- Mapping of GHC versions (used for prereleases)
+ghc-version-mapping:

@@ -1,0 +1,22 @@
+--- a/.github/workflows/haskell-ci.yml
++++ b/.github/workflows/haskell-ci.yml
+@@ -60,7 +60,7 @@
+       - name: apt-get install
+         run: |
+           apt-get update
+-          apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git software-properties-common libtinfo5
++          apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git software-properties-common libtinfo6
+           apt-get install -y gobject-introspection libgirepository1.0-dev libglib2.0-dev pkg-config
+       - name: Install GHCup
+         run: |
+@@ -211,6 +211,10 @@
+       - name: build
+         run: |
+           $CABAL v2-build $ARG_COMPILER $ARG_TESTS $ARG_BENCH all --write-ghc-environment-files=always
++      - name: run tests
++        run: |
++          cd "$GITHUB_WORKSPACE/source"
++          $CABAL v2-test $ARG_COMPILER $ARG_TESTS all
+       - name: cabal check
+         run: |
+           cd ${PKGDIR_cabal_gresource} || false
