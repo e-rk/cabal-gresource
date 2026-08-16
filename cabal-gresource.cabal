@@ -12,6 +12,15 @@ extra-doc-files:
     CHANGELOG.md
     README.md
 tested-with:        GHC ==9.6.7 || ==9.8.4 || ==9.10.3 || ==9.12.4 || ==9.14.1
+homepage: https://github.com/e-rk/cabal-gresource
+description:
+    The package provides build integration with GLib GResources.
+    It allows for automatically building GResources with Haskell programs.
+    The resource is linked into the binary and automatically registered at startup.
+
+source-repository head
+    type:     git
+    location: https://github.com/e-rk/cabal-gresource
 
 common warnings
     ghc-options: -Wall
