@@ -7,8 +7,6 @@
 -- Stability   : experimental
 -- Portability : POSIX
 --
--- Hook for @build-type: Hooks@ builds.
---
 -- There are two ways to integrate the module into your package's build,
 -- one for @build-type: Hooks@, second one for @build-type: Custom@.
 -- Unless you are constrained to use the @Custom@ build type,
