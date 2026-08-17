@@ -23,7 +23,7 @@ custom-setup
 
 executable application:
     x-gresource-xml-file: resource/resource.xml
-    x-gresource-source-dir: resources 
+    x-gresource-source-dir: resource
 ```
 
 * `x-gresource-xml-file`: Path to the XML file describing the GResource
@@ -33,10 +33,10 @@ Remember to add the files to `extra-source-files` in order to be included in sdi
 
 ## Build integration
 
-There are two ways to integrate `cabal-gresource` depending on your package's `build-type`, one for `custom` second for `hooks`.
+There are two ways to integrate `cabal-gresource` depending on your package's `build-type`, one for `Custom` second for `Hooks`.
 
 ### build-type: Hooks
-Set the `build-type: hooks` and create `SetupHooks.hs` file.
+Set the `build-type: Hooks` and create `SetupHooks.hs` file.
 
 ```haskell
 module SetupHooks (setupHooks) where
@@ -49,7 +49,7 @@ setupHooks = gResourceSetupHooks
 ```
 
 ### build-type: Custom
-Set the `build-type: custom` and create `Setup.hs` file.
+Set the `build-type: Custom` and create `Setup.hs` file.
 
 ```haskell
 import Distribution.Simple

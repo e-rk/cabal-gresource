@@ -56,7 +56,7 @@ import Distribution.Verbosity (VerbosityFlags, defaultVerbosityHandles, mkVerbos
 -- executable application:
 --   ...
 --   x-gresource-xml-file: resource/resource.xml
---   x-gresource-source-dir: resources
+--   x-gresource-source-dir: resource
 -- @
 --
 -- @since 0.1.0.0

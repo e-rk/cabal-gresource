@@ -20,7 +20,7 @@ description:
 
 source-repository head
     type:     git
-    location: https://github.com/e-rk/cabal-gresource
+    location: https://github.com/e-rk/cabal-gresource.git
 
 common warnings
     ghc-options: -Wall
